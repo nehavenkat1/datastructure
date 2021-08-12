@@ -25,7 +25,7 @@ function Queue() {
         return items.toString()
     }
 }
-
+/*
 let x = new Queue() 
 x.enqueue('A')
 x.enqueue('B')
@@ -36,4 +36,4 @@ console.log(x.size())
 console.log(x.isEmpty())
 console.log(x.front())
 console.log(x.dequeue())
-console.log(x.print())
+console.log(x.print())*/
