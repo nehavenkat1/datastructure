@@ -1,2 +1,2 @@
 # datastructure
-JavaScript data structure and algorithm practice
+JavaScript data structure and algorithm practice.
