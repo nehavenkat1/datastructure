@@ -6,7 +6,6 @@ function stack() {
         count++
     }
     this.pop = function() {
-        console.log('before pop count = ', count)
         if(count === 0) return undefined
 
         let popped = items[count-1]
@@ -23,9 +22,12 @@ function stack() {
     this.isEmpty = function() {
         return count === 0
     }
+    this.print = function() {
+        return console.log(items.join())
+    }
     
 }
-
+/*
 let x = new stack()
 x.push(11)
 x.push(22)
@@ -53,3 +55,4 @@ console.log(x.pop())
 
 console.log(x.size())
 
+*/
