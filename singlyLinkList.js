@@ -22,27 +22,101 @@ function SinglyLinkList() {
         this.size++
     }
 
-    this.remove = function(value) {
+    this.remove = function(value) { // remove particular element
         let currentHead = this.head
         if(currentHead.data === value) {
-            this.head = currentHead.next
-            this.size--
+            if(currentHead.next === null) {
+                this.head = null
+                this.size--
+                return
+            } else {
+                this.head = currentHead.next
+                currentHead = null
+                this.size--
+                return
+            }
         } else {
             let prev = currentHead
-            while(currentHead.next) {
+            currentHead = currentHead.next
+            console.log('currenthead next = ', currentHead)
+            console.log('next to next = ', currentHead.next)
+            while(currentHead.next !== null) {
                 if(currentHead.data === value) {
-                    
+                    prev.next  = currentHead.next
+                    prev = currentHead
+                    currentHead = currentHead.next
+                    break
                 }
                 prev = currentHead
                 currentHead = currentHead.next
             }
+            if(currentHead.data === value) {
+                prev.next = null
+            }
+            this.size--
         }
     }
+    // remove from head
+    this.removeFromHead = function() {
+        let toReturn = null
+        if(this.head !== null) {
+            if(this.head.next === null) {//head === tail
+                this.head = null
+                this.size = 0
+                return toReturn
+            } else {
+                let temp = this.head
+                this.head = this.head.next
+                temp = null
+                this.size--
+                return this.head
+            }
+        } else {
+            return toReturn
+        }
+    }
+
+    //remove from tail
+
+    this.removeFromTail = function() {
+        let current = this.head
+        let toReturn = null
+        if(current === null) { // no data
+            return toReturn
+        } else if(current.next === null) { // head === tail
+            this.head = null
+            this.size = 0
+            return toReturn
+        } else {
+            let prev = current
+            while(current.next !== null) {
+                prev = current
+                current = current.next
+            }
+            prev.next = null
+            this.size--
+        }
+    }
+    // remove particular position
+/*
+    this.removePosition = function(position) {
+
+    }*/
 }
 
 let s1 = new SinglyLinkList()
 s1.insert(11)
 s1.insert(22)
 s1.insert(33)
+s1.insert(44)
+s1.insert(55)
+s1.insert(66)
+s1.remove(55)
 console.log(s1)
+/*s1.remove(22)
+console.log(s1)
+s1.remove(33)
+console.log(s1)*/
+
+
 
