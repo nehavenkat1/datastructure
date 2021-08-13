@@ -37,13 +37,11 @@ function SinglyLinkList() {
             }
         } else {
             let prev = currentHead
-            currentHead = currentHead.next
-            console.log('currenthead next = ', currentHead)
-            console.log('next to next = ', currentHead.next)
+
             while(currentHead.next !== null) {
+                
                 if(currentHead.data === value) {
-                    prev.next  = currentHead.next
-                    prev = currentHead
+                    prev.next = currentHead.next
                     currentHead = currentHead.next
                     break
                 }
@@ -56,6 +54,7 @@ function SinglyLinkList() {
             this.size--
         }
     }
+
     // remove from head
     this.removeFromHead = function() {
         let toReturn = null
@@ -102,6 +101,31 @@ function SinglyLinkList() {
     this.removePosition = function(position) {
 
     }*/
+
+    this.indexOf = function(value) {
+        let currentHead = this.head
+        let index = -1
+        while(currentHead.next) {
+            if(currentHead.data === value) {
+                return index+1
+            }
+            currentHead = currentHead.next
+            index = index+1
+        }
+        return currentHead.data === value ? index+1 : -1
+    }
+
+
+    this.search = function(value) {
+        let currentHead = this.head
+        while(currentHead.next) {
+            if(currentHead.data === value) {
+                return true
+            }
+            currentHead = currentHead.next
+        }
+        return currentHead.data === value
+    }
 }
 
 let s1 = new SinglyLinkList()
@@ -111,12 +135,12 @@ s1.insert(33)
 s1.insert(44)
 s1.insert(55)
 s1.insert(66)
-s1.remove(55)
+s1.remove(33)
 console.log(s1)
 /*s1.remove(22)
 console.log(s1)
 s1.remove(33)
 console.log(s1)*/
-
-
+/*console.log(s1.search(11))
+console.log('index = ', s1.indexOf(66))*/
 
