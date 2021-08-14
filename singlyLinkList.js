@@ -39,16 +39,14 @@ function SinglyLinkList() {
             let prev = currentHead
 
             while(currentHead.next !== null) {
-                
                 if(currentHead.data === value) {
                     prev.next = currentHead.next
-                    currentHead = currentHead.next
                     break
                 }
                 prev = currentHead
                 currentHead = currentHead.next
             }
-            if(currentHead.data === value) {
+            if(currentHead.next === null && currentHead.data === value) {
                 prev.next = null
             }
             this.size--
@@ -135,7 +133,7 @@ s1.insert(33)
 s1.insert(44)
 s1.insert(55)
 s1.insert(66)
-s1.remove(33)
+s1.remove(55)
 console.log(s1)
 /*s1.remove(22)
 console.log(s1)
