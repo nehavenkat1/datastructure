@@ -113,6 +113,18 @@ function DoublyLinkList() {
     this.length = function() {
         return this.size
     }
+
+    this.find = function(value) {
+        toReturn = false
+        if(!this.head !== null) {
+            let currentHead = this.head
+            while(currentHead) {
+                if(currentHead.data === value) return true
+                currentHead = currentHead.next
+            } 
+        }
+        return toReturn
+    }
 }
 
 let d1 = new DoublyLinkList()
@@ -123,7 +135,8 @@ d1.addAtFront(44)
 d1.addAtTail(111)
 d1.addAtTail(222)
 d1.addAtPosition(101, 1)
-//console.log(d1)*/
+//console.log(d1)
 //d1.deleteAtTail()
-d1.deleteAtPosition(6)
-console.log(d1)
+//d1.deleteAtPosition(6)
+//console.log(d1)
+console.log(d1.find(2222))

@@ -95,10 +95,24 @@ function SinglyLinkList() {
         }
     }
     // remove particular position
-/*
-    this.removePosition = function(position) {
 
-    }*/
+    this.removePosition = function(position) {
+        if(position < 0 || position > this.size) return false
+        let index = 0, current = this.head, previous = this.head
+        if(position === 0) {
+            this.head = this.head.next
+        } else {
+            while(index !== position) {
+                previous = current
+                current = current.next
+                index++
+            }
+            previous.next = current.next
+        }
+        
+        this.size--
+        return true
+    }
 
     this.indexOf = function(value) {
         let currentHead = this.head
@@ -116,6 +130,7 @@ function SinglyLinkList() {
 
     this.search = function(value) {
         let currentHead = this.head
+        console.log('curr ',currentHead)
         while(currentHead.next) {
             if(currentHead.data === value) {
                 return true
@@ -124,6 +139,40 @@ function SinglyLinkList() {
         }
         return currentHead.data === value
     }
+/*
+    this.reverse = function() {
+        let node = this.head, previous = null, temp
+        while(node) {
+            let temp = node.next
+            node.next = previous
+            previous = node
+            if(!temp) {
+                //this.head = previous
+                break
+            }
+                
+            node = temp    
+
+        }
+        return node
+    } */
+}
+
+
+function reverse(sl) {
+    let node = sl.head, previous = null, temp
+        while(node) {
+            let temp = node.next
+            console.log('node', node)
+            console.log('temp', temp)
+            node.next = previous
+            previous = node
+            if(!temp)
+                break
+            node = temp
+                       
+        }
+        return node
 }
 
 let s1 = new SinglyLinkList()
@@ -133,12 +182,16 @@ s1.insert(33)
 s1.insert(44)
 s1.insert(55)
 s1.insert(66)
-s1.remove(55)
-console.log(s1)
+//s1.remove(55)
+//console.log(s1)
 /*s1.remove(22)
 console.log(s1)
 s1.remove(33)
 console.log(s1)*/
 /*console.log(s1.search(11))
 console.log('index = ', s1.indexOf(66))*/
-
+//console.log(s1.removePosition(2))
+//console.log(s1)
+//s1.reverse()
+console.log(reverse(s1))
+console.log(s1.search(22))
